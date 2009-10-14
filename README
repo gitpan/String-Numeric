@@ -24,34 +24,8 @@ DESCRIPTION
     optional minus sign, which may be followed by a fractional part and/or
     an exponent part.
 
-    None of the following is considered valid by "String::Numeric".
-
-    * Fractional number without integer part or fractional part
-            looks_like_number("1.") # true
-            looks_like_number(".1") # true
-
-    * Plus prefix
-            looks_like_number("+1") # true
-
-    * Leading zeros
-            looks_like_number("01") # true
-
-    * Radix point other than "."
-            looks_like_number("1,1") # true assuming locale is in effect and locale radix point is ','
-
-    * Leading and/or trailing whitespace, such as HT, LF, FF, CR, and SP
-            looks_like_number("\n1")   # true
-            looks_like_number("1\n")   # true
-            looks_like_number("\n1\n") # true
-
-    * Numeric values that are not represented as a sequence of digits, such
-    as "Inf", "Infinity", "NaN" and "0 but true"
-            looks_like_number("Inf")        # true
-            looks_like_number("Infinity")   # true
-            looks_like_number("NaN")        # true
-            looks_like_number("0 but true") # true
-
-    See "String::Numeric ABNF" for specification.
+    See "String::Numeric ABNF" for specification and "COMPARISON" for a
+    comparison with "Scalar::Util::looks_like_number()".
 
 FUNCTIONS
   is_float
@@ -203,9 +177,8 @@ FUNCTIONS
 
   is_int128
     Determine whether $string is a 128-bit signed integer which can have any
-    value in the range
-    −170,141,183,460,469,231,731,687,303,715,884,105,728 to
-    170,141,183,460,469,231,731,687,303,715,884,105,727.
+    value in the range -170,141,183,460,469,231,731,687,303,715,884,105,728
+    to 170,141,183,460,469,231,731,687,303,715,884,105,727.
 
     *Usage*
 
@@ -337,6 +310,40 @@ FUNCTIONS
 
     $boolean
 
+LIMITATIONS
+    "String::Numeric" supports numbers in decimal notation using Western
+    Arabic numerals and decimal fractions seperated with a dot. Other
+    notations or numeral systems are not supported.
+
+COMPARISON
+  Scalar::Util
+    None of the following is considered valid by "String::Numeric".
+
+    * Fractional number without integer part or fractional part
+            looks_like_number("1.") # true
+            looks_like_number(".1") # true
+
+    * Plus prefix
+            looks_like_number("+1") # true
+
+    * Leading zeros
+            looks_like_number("01") # true
+
+    * Radix point other than "."
+            looks_like_number("1,1") # true assuming locale is in effect and locale radix point is ','
+
+    * Leading and/or trailing whitespace, such as HT, LF, FF, CR, and SP
+            looks_like_number("\n1")   # true
+            looks_like_number("1\n")   # true
+            looks_like_number("\n1\n") # true
+
+    * Numeric values that are not represented as a sequence of digits, such
+    as "Inf", "Infinity", "NaN" and "0 but true"
+            looks_like_number("Inf")        # true
+            looks_like_number("Infinity")   # true
+            looks_like_number("NaN")        # true
+            looks_like_number("0 but true") # true
+
 GRAMMAR
   String::Numeric ABNF
         ; String::Numeric ABNF Grammar
@@ -409,6 +416,8 @@ PREREQUISITES
 
 SEE ALSO
     String::Numeric::XS
+
+    Data::Types
 
     Regexp::Common::number
 

@@ -3,7 +3,7 @@ use strict;
 use warnings;
 
 BEGIN {
-    our $VERSION   = 0.1;
+    our $VERSION   = 0.2;
     our @EXPORT_OK = qw(
         is_numeric
         is_float
@@ -81,44 +81,7 @@ A numeric value contains an integer part that may be prefixed with an
 optional minus sign, which may be followed by a fractional part and/or an 
 exponent part.
 
-None of the following is considered valid by C<String::Numeric>.
-
-=over 4
-
-=item * Fractional number without integer part or fractional part
-
-    looks_like_number("1.") # true
-    looks_like_number(".1") # true
-
-=item * Plus prefix
-
-    looks_like_number("+1") # true
-
-=item * Leading zeros
-
-    looks_like_number("01") # true
-
-=item * Radix point other than C<.>
-
-    looks_like_number("1,1") # true assuming locale is in effect and locale radix point is ','
-
-=item * Leading and/or trailing whitespace, such as HT, LF, FF, CR, and SP
-
-    looks_like_number("\n1")   # true
-    looks_like_number("1\n")   # true
-    looks_like_number("\n1\n") # true
-
-=item * Numeric values that are not represented as a sequence of digits, such as 
-C<Inf>, C<Infinity>, C<NaN> and C<0 but true>
-
-    looks_like_number("Inf")        # true
-    looks_like_number("Infinity")   # true
-    looks_like_number("NaN")        # true
-    looks_like_number("0 but true") # true
-
-=back
-
-See L<"String::Numeric ABNF"> for specification.
+See L</String::Numeric ABNF> for specification and L</COMPARISON> for a comparison with C<Scalar::Util::looks_like_number()>.
 
 =head1 FUNCTIONS
 
@@ -341,7 +304,7 @@ I<Returns>
 =head2 is_int128
 
 Determine whether C<$string> is a 128-bit signed integer which can have any 
-value in the range −170,141,183,460,469,231,731,687,303,715,884,105,728 to 
+value in the range -170,141,183,460,469,231,731,687,303,715,884,105,728 to 
 170,141,183,460,469,231,731,687,303,715,884,105,727.
 
 I<Usage>
@@ -532,6 +495,53 @@ I<Returns>
 =over 4
 
 =item C<$boolean>
+
+=back
+
+=head1 LIMITATIONS
+
+C<String::Numeric> supports numbers in decimal notation using Western Arabic
+numerals and decimal fractions seperated with a dot. Other notations or numeral
+systems are not supported.
+
+=head1 COMPARISON
+
+=head2 Scalar::Util
+
+B<None> of the following is considered valid by C<String::Numeric>.
+
+=over 4
+
+=item * Fractional number without integer part or fractional part
+
+    looks_like_number("1.") # true
+    looks_like_number(".1") # true
+
+=item * Plus prefix
+
+    looks_like_number("+1") # true
+
+=item * Leading zeros
+
+    looks_like_number("01") # true
+
+=item * Radix point other than C<.>
+
+    looks_like_number("1,1") # true assuming locale is in effect and locale radix point is ','
+
+=item * Leading and/or trailing whitespace, such as HT, LF, FF, CR, and SP
+
+    looks_like_number("\n1")   # true
+    looks_like_number("1\n")   # true
+    looks_like_number("\n1\n") # true
+
+=item * Numeric values that are not represented as a sequence of digits, such as 
+C<Inf>, C<Infinity>, C<NaN> and C<0 but true>
+
+    looks_like_number("Inf")        # true
+    looks_like_number("Infinity")   # true
+    looks_like_number("NaN")        # true
+    looks_like_number("0 but true") # true
 
 =back
 
