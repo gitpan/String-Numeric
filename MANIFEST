@@ -17,4 +17,6 @@ t/000_load.t
 t/005_import.t
 t/010_usage.t
 t/020_basic.t
+t/060_overload.t
+t/070_tiescalar.t
 t/lib/myconfig.pm

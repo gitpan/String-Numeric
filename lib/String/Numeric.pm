@@ -3,7 +3,7 @@ use strict;
 use warnings;
 
 BEGIN {
-    our $VERSION   = 0.2;
+    our $VERSION   = 0.9;
     our @EXPORT_OK = qw(
         is_numeric
         is_float
