@@ -3,7 +3,7 @@ use strict;
 use warnings;
 
 BEGIN {
-    our $VERSION   = 0.9;
+    our $VERSION   = '0.9_01';
     our @EXPORT_OK = qw(
         is_numeric
         is_float
@@ -30,7 +30,6 @@ BEGIN {
     );
 
     if ( !$ENV{STRING_NUMERIC_PP} ) {
-
         eval {
             require String::Numeric::XS;
         };
@@ -649,6 +648,8 @@ In addition to Run-Time:
 
 L<String::Numeric::XS>
 
+L<String::Numeric::Regexp>
+
 L<Data::Types>
 
 L<Regexp::Common::number>
@@ -663,7 +664,7 @@ Christian Hansen C<chansen@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2009 Christian Hansen.
+Copyright 2009-2010 Christian Hansen.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.

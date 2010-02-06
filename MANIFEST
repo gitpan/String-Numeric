@@ -9,6 +9,7 @@ inc/Module/Install/Win32.pm
 inc/Module/Install/WriteAll.pm
 lib/String/Numeric.pm
 lib/String/Numeric/PP.pm
+lib/String/Numeric/Regexp.pm
 Makefile.PL
 MANIFEST			This list of files
 META.yml

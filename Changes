@@ -1,9 +1,16 @@
-0.9 2009-11-20 11:45
+0.9_01 2010-02-06
+    - Added String::Numeric::Regexp
+    - Refactored String::Numeric::PP to use String::Numeric::Regexp
+      - This gives the PP version a performance increase of ~ 40-80 percent.
+      - XS version is ~ 400-600 percent faster than PP version and ~ 150-300
+        percent faster than using regexp.
+
+0.9 2009-11-20
     - Added more tests, 100% coverage.
 
-0.2 2009-10-14 16:00
+0.2 2009-10-14
     - Improved documentation.
 
-0.1 2009-10-12 22:00
+0.1 2009-10-12
     - Initial release.
 
